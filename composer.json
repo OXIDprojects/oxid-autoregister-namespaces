@@ -1,5 +1,5 @@
 {
-    "name":        "zunderweb/autoregister-namespaces",
+    "name":        "zunderweb/oxid-autoregister-namespaces",
     "description": "OXID eShop: Autoregister Module Namespaces",
     "type":        "oxideshop-module",
     "keywords":    [
