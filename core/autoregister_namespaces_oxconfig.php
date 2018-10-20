@@ -26,7 +26,7 @@ class autoregister_namespaces_oxconfig extends autoregister_namespaces_oxconfig_
                                 if (is_array($prefixes)){
                                     foreach ($prefixes as $prefix => $prefixPath){
                                         if(!$loadedPrefixes[$prefix]){
-                                            if (strpos($prefixPath, $modulePath) !== false){
+                                            if ($prefixPath == '../../../source/modules/' . $modulePath){
                                                 $loader->addPsr4($prefix, $modulePathAbsolute);
                                             }
                                         }
