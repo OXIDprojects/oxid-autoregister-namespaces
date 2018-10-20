@@ -1,0 +1,35 @@
+{
+    "name":        "zunderweb/autoregister-namespaces",
+    "description": "OXID eShop: Autoregister Module Namespaces",
+    "type":        "oxideshop-module",
+    "keywords":    [
+        "oxid",
+        "modules",
+        "eShop"
+    ],
+    "homepage":    "https://www.zunderweb.de",
+    "license":     [
+        "GPL-3.0"
+    ],
+    "authors":     [
+        {
+            "name":  "zunderweb",
+            "email": "info@zunderweb.de"
+        }
+    ],
+    "extra":       {
+        "oxideshop": {
+            "target-directory": "zunderweb/autoregister-namespaces"
+        }
+    },
+    "require":     {
+        "php": ">=5.6",
+        "oxid-esales/oxideshop-ce": "^v6.0"
+    },
+    "autoload":    {
+        "psr-4": {
+        }
+    }
+}
+
+
