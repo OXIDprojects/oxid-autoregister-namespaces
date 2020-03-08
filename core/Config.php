@@ -1,6 +1,9 @@
 <?php
 
-class autoregister_namespaces_oxconfig extends autoregister_namespaces_oxconfig_parent
+namespace zunderweb\autoregister_namespaces\core;
+use oxRegistry;
+
+class Config extends Config_parent
 {
     public function init()
     {

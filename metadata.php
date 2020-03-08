@@ -1,19 +1,19 @@
 <?php
 
-$sMetadataVersion = '1.1';
+$sMetadataVersion = '2.0';
 $aModule = array(
     'id'          => 'autoregister-namespaces',
-    'title'       => 'Autoregister Module Namespaces',
+    'title'       => 'Zunderweb Autoregister Module Namespaces',
     'description' =>  array(
         'de'=>'',
         'en'=>'',
     ),
-    'version'     => '0.0.3',
+    'version'     => '1.0.0',
     'url'         => 'http://zunderweb.de',
     'email'       => 'info@zunderweb.de',
     'author'      => 'Zunderweb',
     'extend'      => array(
-        'oxconfig' => 'zunderweb/autoregister-namespaces/core/autoregister_namespaces_oxconfig', 
+        \OxidEsales\Eshop\Core\Config::class => \zunderweb\autoregister_namespaces\core\Config::class,
     ),
     'settings' => array(
         array('group' => 'zwar_settings', 'name' => 'blZwarProductionMode', 'type' => 'bool',  'value' => '0'),
