@@ -2,6 +2,9 @@
 
 namespace zunderweb\autoregister_namespaces\core;
 use oxRegistry;
+use OxidEsales\Eshop\Core\Module\Module;
+use OxidEsales\EshopCommunity\Internal\Container\ContainerFactory;
+use OxidEsales\EshopCommunity\Internal\Framework\Module\Configuration\Bridge\ShopConfigurationDaoBridgeInterface;
 
 class Config extends Config_parent
 {
@@ -20,7 +23,7 @@ class Config extends Config_parent
         $aPrefixesToLoad = oxRegistry::getUtils()->fromFileCache('zwb_autoload_namespaces');
         if ($aPrefixesToLoad === null || !$this->getConfigParam('blZwarProductionMode')){
             $loadedPrefixes = $loader->getPrefixesPsr4();
-            $modulePaths = $this->getConfigParam('aModulePaths');
+            $modulePaths = $this->z_getModulePaths();
             $modulesDir = $this->getModulesDir(true);
             $aPrefixesToLoad = array();
             if (is_array($modulePaths)){
@@ -53,5 +56,21 @@ class Config extends Config_parent
             $loader->addPsr4($prefix, $modulePathAbsolute);
         }
         stopProfile('autoregister_namespaces');
+    }
+    
+    private function z_getModulePaths(): array
+    {
+        $container = ContainerFactory::getInstance()->getContainer();
+        $shopConfiguration = $container->get(ShopConfigurationDaoBridgeInterface::class)->get();
+
+        $modules = [];
+
+        foreach ($shopConfiguration->getModuleConfigurations() as $moduleConfiguration) {
+            $module = oxNew(Module::class);
+            $path = $moduleConfiguration->getPath();
+            $modules[] = $path;
+        }
+
+        return $modules;
     }
 }
